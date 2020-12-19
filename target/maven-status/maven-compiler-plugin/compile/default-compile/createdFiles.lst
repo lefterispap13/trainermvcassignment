@@ -1,0 +1,12 @@
+com\lepa\trainermvcassignment\configuration\AppConfig.class
+com\lepa\trainermvcassignment\configuration\AppInitializer.class
+com\lepa\trainermvcassignment\controllers\TrainerController.class
+com\lepa\trainermvcassignment\ServletInitializer.class
+com\lepa\trainermvcassignment\entities\Trainer.class
+com\lepa\trainermvcassignment\controllers\Login.class
+com\lepa\trainermvcassignment\requests\NewTrainerRequest.class
+com\lepa\trainermvcassignment\configuration\HibernateConfiguration.class
+com\lepa\trainermvcassignment\TrainermvcassignmentApplication.class
+com\lepa\trainermvcassignment\services\TrainerService.class
+com\lepa\trainermvcassignment\dao\TrainerDao.class
+com\lepa\trainermvcassignment\services\ITrainerService.class
