@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "org.afdemp.trainermvcassignment")
+@ComponentScan(basePackages = "com.lepa.trainermvcassignment")
 public class AppConfig {
 	
 	@Bean
@@ -25,11 +25,11 @@ public class AppConfig {
 		return viewResolver;
 	}
 	
-	@Bean
-	public MessageSource messageSource() {
-	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-	    messageSource.setBasename("messages");
-	    return messageSource;
-	}
+//	@Bean
+//	public MessageSource messageSource() {
+//	    ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+//	    messageSource.setBasename("messages");
+//	    return messageSource;
+//	}
 }
 

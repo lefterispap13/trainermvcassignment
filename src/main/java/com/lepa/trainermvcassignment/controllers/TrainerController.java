@@ -8,39 +8,55 @@ package com.lepa.trainermvcassignment.controllers;
 
 import com.lepa.trainermvcassignment.entities.Trainer;
 import com.lepa.trainermvcassignment.requests.NewTrainerRequest;
+import com.lepa.trainermvcassignment.services.ITrainerService;
 import com.lepa.trainermvcassignment.services.TrainerService;
 import java.util.List;
 import static java.util.Objects.isNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
  * @author User
  */
 
-@RestController
+@Controller
 @RequestMapping("/trainer")
 public class TrainerController {
-    
+
+    private String listurl = "list";
+    private String editurl = "edit";
+    private String deleteurl = "delete";
+    private String updateurl = "update";
+
     @Autowired
-    private TrainerService trainerService;
+    ITrainerService trainerService;
+
+    @Autowired
+    MessageSource messageSource;
     
     // get all trainers
-    @RequestMapping(value="/getall")
-    public List<Trainer> getAllTrainers(){
+    @RequestMapping(value={"/","/list"},method=RequestMethod.GET)
+    public String getAllTrainers(ModelMap view, @RequestParam(required = false) String msg){
         List<Trainer> trainers=trainerService.getAllTrainers();
-        return trainers;
+        view.addAttribute("trainers", trainers);
+        view.addAttribute("editurl", editurl);
+        view.addAttribute("deleteurl", deleteurl);
+        view.addAttribute("msg", msg);
+        return "trainerlist";
     }
     
     // get trainer by id
-    @RequestMapping(value="/getbyid")
-    public Trainer getTrainerById(@RequestBody long id){
+    @RequestMapping(value="/{id}")
+    public String getTrainerById(ModelMap view ,@PathVariable@RequestBody long id){
+        view.addAttribute("projectName", "Trainer MVC Assignment");
         Trainer trainer=trainerService.getTrainerById(id);
-        return trainer;
+        view.addAttribute("trainer", trainer);
+
+        return "trainer";
     }
     
     // update trainer by id

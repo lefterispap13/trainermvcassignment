@@ -14,12 +14,15 @@ import static java.util.Objects.isNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 /**
  *
  * @author User
  */
 
-@Service
+@Service("trainerService")
+@Transactional
 public class TrainerService implements ITrainerService{
     
     @Autowired
