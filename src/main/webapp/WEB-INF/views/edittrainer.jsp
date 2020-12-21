@@ -1,8 +1,3 @@
-<%-- 
-    Document   : newstudent
-    Created on : 07-May-2020, 16:45:23
-    Author     : mac
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -11,10 +6,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Update Trainer</title>
+        <title>Edit Trainer</title>
     </head>
     <body>
-        <h1>Update a Trainer</h1>
+        <h1>Edit a Trainer</h1>
         
         <% 
             String updateUrlFINAL = request.getContextPath() + "/" + request.getAttribute("updateurl");

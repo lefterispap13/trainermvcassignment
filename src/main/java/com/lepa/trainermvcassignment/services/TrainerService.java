@@ -36,8 +36,7 @@ public class TrainerService implements ITrainerService{
 
     @Override
     public Trainer getTrainerById(long id) {
-        Trainer trainer=(Trainer)trainerDao.findById(id).orElse(null);
-        return trainer;
+        return trainerDao.findById(id).get();
     }
 
     @Override
@@ -59,16 +58,20 @@ public class TrainerService implements ITrainerService{
         return false;
     }
 
-    @Override
-    public boolean deleteTrainer(long id) {
-        Trainer trainer = trainerDao.findById(id).orElse(null);
+   
+    public boolean deleteTrainer(long id){
+        
+        Trainer trainer=trainerDao.findById(id).orElse(null);
         if(isNull(trainer)){
             return false;
         }
         trainerDao.delete(trainer);
         return true;
     }
-
+    
+    public void save(Trainer trainer){
+        trainerDao.save(trainer);
+    }
 
     
     

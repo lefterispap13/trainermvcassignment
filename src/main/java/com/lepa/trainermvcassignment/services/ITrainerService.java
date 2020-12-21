@@ -25,5 +25,7 @@ public interface ITrainerService {
     boolean deleteTrainer(long id);
             
     public boolean update(Trainer trainer);
+    
+    void save(Trainer trainer);
 
 }

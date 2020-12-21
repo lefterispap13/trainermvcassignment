@@ -9,10 +9,7 @@ package com.lepa.trainermvcassignment.dao;
 import com.lepa.trainermvcassignment.entities.Trainer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author User
- */
+
 public interface TrainerDao extends JpaRepository<Trainer,Long>{
 
 
