@@ -19,10 +19,11 @@ public interface ITrainerService {
     List<Trainer> getAllTrainers();
     
     Trainer getTrainerById(long id);
-    
+
     Trainer newTrainer(NewTrainerRequest request);
     
     boolean deleteTrainer(long id);
             
+    public boolean update(Trainer trainer);
 
 }

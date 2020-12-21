@@ -10,7 +10,7 @@
     </head>
     <body>
         <h1>Trainers' List</h1>
-        <table>
+        <table border="1">
 		<tr>
                     <td>ID</td><td>FIRST NAME</td><td>LAST NAME</td><td>SUBJECT</td><td></td>
 		</tr>

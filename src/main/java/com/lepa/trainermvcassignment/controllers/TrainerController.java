@@ -62,22 +62,53 @@ public class TrainerController {
     // update trainer by id
     
     
-    // new trainer
-    @RequestMapping(value="/new")
-    public String newTrainer(@RequestBody NewTrainerRequest request){
-        Trainer trainer=trainerService.newTrainer(request);
-        if(isNull(trainer)){
-            return "fail";
-        }
-        return"true";
+    // get form for new trainer ??
+    @GetMapping(value = "/new")
+    public String createTrainer(ModelMap view){
+        Trainer trainer=new Trainer();
+        view.addAttribute("trainer",trainer);
+        view.addAttribute("listurl",listurl);
+        return "newtrainer";
     }
+
+//    //post method for new trainer
+//    @RequestMapping(value = "/new", method = RequestMethod.POST)
+//    public String saveTrainer(ModelMap view,Trainer trainer){
+//        if (trainerService.)
+//    }
+
+
+
     
-    // delete trainer by id
-    @PostMapping(value="/delete")
-    public String deleteTrainer(long id){
-        boolean status=trainerService.deleteTrainer(id);
-        return "Is the request succesfull???"+ status;
-        
+    // delete trainer by id  ???sto list
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    public String deleteTrainer(ModelMap view,@PathVariable long id){
+        if (trainerService.deleteTrainer(id)){
+            view.addAttribute("msg","The trainer was successfully deleted!!!");
+        } else{
+            view.addAttribute("msg","Oops something went wrong... the trainer has not deleted!!!");
+        }
+        return "redirect:/trainer/list";
+    }
+
+    //edw me petaei apo thn lista sto edit alla dn kanei ontws
+    // to update sthn vash kai dn mou kanei redirect
+
+    // show edit / update for an existing trainer  ??
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    public String editTrainer(ModelMap view,@PathVariable long id){
+        Trainer trainer=trainerService.getTrainerById(id);
+        view.addAttribute("trainer",trainer);
+        view.addAttribute("updateurl",updateurl);
+        return "edittrainer";
+    }
+
+    // store edit/update for an existing trainer  ??(dn paizei to redirect)
+    @PostMapping(value="/update")
+    public String updateTrainer(ModelMap view,Trainer trainer){
+        trainerService.update(trainer);
+        view.addAttribute("msg", new String(""));
+        return("trainerlist");
     }
     
 

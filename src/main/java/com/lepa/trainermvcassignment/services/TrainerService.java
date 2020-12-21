@@ -46,6 +46,19 @@ public class TrainerService implements ITrainerService{
         return trainerDao.save(trainer);
     }
 
+    //??
+    public boolean update(Trainer trainer){
+        Trainer tempTrainer=trainerDao.findById(trainer.getId()).orElse(null);
+        if (tempTrainer != null) {
+            tempTrainer.setFirstName(trainer.getFirstName());
+            tempTrainer.setLastName(trainer.getLastName());
+            tempTrainer.setSubject(trainer.getSubject());
+            trainerDao.save(tempTrainer);
+            return true;
+        }else
+        return false;
+    }
+
     @Override
     public boolean deleteTrainer(long id) {
         Trainer trainer = trainerDao.findById(id).orElse(null);
@@ -55,6 +68,7 @@ public class TrainerService implements ITrainerService{
         trainerDao.delete(trainer);
         return true;
     }
+
 
     
     
